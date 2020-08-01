@@ -1,0 +1,13 @@
+<h1>Connexion</h1>
+
+<form action="{% url 'authentication:postLogin'%}" id="login-form" method="post">
+    {% csrf_token %}
+    <label for="email">E-mail:</label>
+    <input type="text" id="email" name="email" required minlength="4" maxlength="8" size="10">
+
+    <label for="email">Mot de passe:</label>
+    <input type="text" id="password" name="password" required minlength="4" maxlength="8" size="10">
+
+</form>
+
+<button type="submit" form="login-form" value="Submit">Submit</button>
