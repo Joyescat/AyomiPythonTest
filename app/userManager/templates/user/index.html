@@ -1,0 +1,15 @@
+<h1>Bienvenue!</h1>
+<h1>Informations du compte</h1>
+<p>e-mail: {{user.email}}</p>
+
+</br>
+</br>
+</br>
+
+<form action="{% url 'userManager:user' user.pk %}" id="change-email-form" method="post">
+  {% csrf_token %}
+  <label for="email">Nouvelle email:</label>
+  <input type="text" id="email" name="email" required>
+</form>
+
+<button type="submit" form="change-email-form" value="Submit">Submit</button>
