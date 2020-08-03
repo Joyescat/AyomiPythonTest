@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.urls import path
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^', include(('authentication.urls', 'authentication'), namespace='authentication')),
-    url(r'^', include(('userManager.urls', 'userManager'), namespace='userManager'))
+    url(r'^', include(('userManager.urls', 'userManager'), namespace='userManager')),
+    url(r'^', TemplateView.as_view(template_name="boostrap/base.html"))
 ]

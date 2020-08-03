@@ -1,13 +1,40 @@
-<h1>Inscription</h1>
+{% extends "base.html" %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% block content %}
+<div class="container">
 
-<form action="{% url 'authentication:register' %}" id="login-form" method="post">
-    {% csrf_token %}
-    <label for="email">E-mail:</label>
-    <input type="text" id="email" name="email" required>
-    <label for="email">Mot de passe:</label>
-    <input type="password" id="password" name="password" required>
-</form>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Inscription</h1>
+        </div>
+        <div class="panel-body">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<button type="submit" form="login-form" value="Submit">Submit</button>
+        <form action="{% url 'authentication:register' %}" id="register-form" method="post">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                </span>
+                <input class="form-control" type="email" id="email" name="email" required placeholder="E-mail">
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                </span>
+                <input class="form-control" type="password" id="password" name="password" required placeholder="Mot de passe">
+            </div>
+
+        </form>
+        <div class="btn-in-panel">
+            <button type="submit" form="register-form" value="Submit" class="btn btn-primary">S'inscrire</button>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <p>Déjà un compte? <a href="{% url 'authentication:login'%}">Connectez-vous!</a></p>
+    </div>
+    </div>
+</div>
+{% endblock %}
