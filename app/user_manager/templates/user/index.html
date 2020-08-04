@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block base_head %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div id="user-page" class="container">
+
+  <!-- Modal -->
+  <div id="update-email-modal" class="modal">
+    <form action="{% url 'user_manager:user' user.pk%}" id="change-email-form" method="POST" class="form">
+      {% csrf_token %}
+      <h3>Veuillez rentrer votre nouvelle email</h3>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </span>
+        {{ form.email }}
+      </div>
+    </form>
+    {% if error_message %}<p id="error-message" class="centered"><strong>{{ error_message }}</strong></p>{% endif %}
+    <div class="centered">
+      <button href="#" rel="modal:close" type="submit" form="change-email-form" value="Submit" class="btn btn-primary">Valider</button>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1>Bienvenue!</h1>
+    </div>
+    <div class="panel-body">
+      <h2>Informations du compte:</h2>
+      <p>
+        e-mail: {{ user.email }}
+        <a  href="#update-email-modal" rel="modal:open">
+          <button id="edit-icon" type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+          </button>
+        </a>
+      </p>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

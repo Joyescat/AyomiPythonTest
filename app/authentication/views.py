@@ -9,7 +9,7 @@ def login(request):
 	if (request.POST):
 		try:
 			user = get_object_or_404(User, email=request.POST['email'], password=request.POST['password'])
-			return HttpResponseRedirect(reverse('userManager:user', args=(user.id,)))
+			return HttpResponseRedirect(reverse('user_manager:user', args=(user.id,)))
 		except:
 			context['error_message'] = 'Email ou mot de passe erroné'
 

@@ -1,0 +1,15 @@
+.modal {
+  position: relative;
+  overflow: visible;
+}
+
+#user-page {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#edit-icon {
+  margin-left: 20px;
+}

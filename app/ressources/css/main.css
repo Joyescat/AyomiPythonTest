@@ -14,7 +14,10 @@ body {
   margin: 20px;
 }
 
-.btn-in-panel {
+.centered {
   display: flex;
   justify-content: center;
+}
+#error-message {
+  color: crimson;
 }
