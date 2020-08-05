@@ -1,8 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
+from django.shortcuts import redirect
 
 from .models import User
+
+def home(request):
+	return HttpResponseRedirect('/login')
 
 def login(request):
 	context = {}
@@ -11,7 +15,7 @@ def login(request):
 			user = get_object_or_404(User, email=request.POST['email'], password=request.POST['password'])
 			return HttpResponseRedirect(reverse('user_manager:user', args=(user.id,)))
 		except:
-			context['error_message'] = 'Email ou mot de passe erroné'
+			context['error_message'] = 'E-mail ou mot de passe erroné'
 
 	return HttpResponse(render(request, 'login/index.html', context))
 

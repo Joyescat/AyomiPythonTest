@@ -5,11 +5,11 @@
 
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1>Connexion</h1>
+            <h1>Inscription</h1>
         </div>
         <div class="panel-body">
 
-        <form action="{% url 'authentication:login' %}" id="login-form" method="post">
+        <form action="{% url 'authentication:register' %}" id="register-form" method="post">
             {% csrf_token %}
 
             <div class="input-group">
@@ -27,13 +27,17 @@
             </div>
 
         </form>
-        {% if error_message %}<p id="error-message"><strong>{{ error_message }}</strong></p>{% endif %}
+        {% if error_message %}
+            <div class='alert-danger alert radius' id="error-message">
+                <p><strong>{{ error_message }}</strong></p>
+            </div>
+        {% endif %}
         <div class="centered">
-            <button type="submit" form="login-form" value="Submit" class="btn btn-primary">Se connecter</button>
+            <button type="submit" form="register-form" value="Submit" class="btn btn-primary">S'inscrire</button>
         </div>
     </div>
     <div class="panel-footer">
-        <p>Pas encore de compte? <a href="{% url 'authentication:register'%}">Inscrivez-vous dès maintenant!</a></p>
+        <p>Déjà un compte? <a href="{% url 'authentication:login'%}">Connectez-vous!</a></p>
     </div>
     </div>
 </div>

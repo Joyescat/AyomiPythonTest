@@ -6,8 +6,8 @@ class EditUserForm(forms.ModelForm):
 	class Meta:
 		model = User
 		fields = ['email']
-		widget = {
-			'email': forms.Textarea(
+		widgets = {
+			'email': forms.EmailInput(
 				attrs = {
 					'class': 'form-control',
 					'id': 'new-email',
